@@ -1056,7 +1056,7 @@ section {
 #footer {
   padding: 15px;
   color: #f4f6fd;
-  font-size: 10px;
+  font-size: 8px;
   position: fixed;
   left: 0;
   bottom: 0;
@@ -1072,7 +1072,7 @@ section {
 #footer .credits {
   padding-top: 5px;
   text-align: center;
-  font-size: 8px;
+  font-size: 6px;
   color: #eaebf0;
 }
 

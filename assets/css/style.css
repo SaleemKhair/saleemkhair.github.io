@@ -479,7 +479,6 @@ section {
   border-right: 0;
   -webkit-transform-origin: center right;
   transform-origin: center right;
-  animation: loading-1 1.8s linear forwards
 }
 
 .progress .progress-value {
@@ -500,7 +499,6 @@ section {
 }
 
 
-
 .progress.yellow .progress-bar {
   border-color: #fdba04
 }
@@ -518,30 +516,6 @@ section {
   }
 }
 
-@keyframes loading-2 {
-  0% {
-      -webkit-transform: rotate(0deg);
-      transform: rotate(0deg)
-  }
-
-  100% {
-      -webkit-transform: rotate(144deg);
-      transform: rotate(144deg)
-  }
-}
-
-@keyframes loading-3 {
-  0% {
-      -webkit-transform: rotate(0deg);
-      transform: rotate(0deg)
-  }
-
-  100% {
-      -webkit-transform: rotate(135deg);
-      transform: rotate(135deg)
-  }
-}
-
 
 @keyframes loading-4 {
   0% {
@@ -554,40 +528,6 @@ section {
       transform: rotate(var(--degn, 180))
   }
 }
-/* .skills .progress {
-  height: 60px;
-  display: block;
-  background: none;
-  border-radius: 0;
-}
-
-.skills .progress .skill {
-  padding: 0;
-  margin: 0 0 6px 0;
-  text-transform: uppercase;
-  display: block;
-  font-weight: 600;
-  font-family: "Poppins", sans-serif;
-  color: #050d18;
-}
-
-.skills .progress .skill .val {
-  float: right;
-  font-style: normal;
-}
-
-.skills .progress-bar-wrap {
-  background: #dce8f8;
-  height: 10px;
-}
-
-.skills .progress-bar {
-  width: 1px;
-  height: 10px;
-  transition: .9s;
-  background-color: #149ddd;
-}
-*/
 
 /*--------------------------------------------------------------
 # Resume

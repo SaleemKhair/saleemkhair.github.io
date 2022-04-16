@@ -141,7 +141,7 @@
     });
   }
 
-  let skillsData = {
+  const skillsData = {
     "Java": 0.9,
     "Kotlin": 0.7,
     "Python": 0.8,
@@ -154,39 +154,40 @@
   }
 
 
-  let skilsContent = select('.skills-content');
+  const skilsContent = select('.skills-content');
 
-
-  let sideElement = document.createElement('div')
-  sideElement.className = 'col-sm-12';
-  sideElement.setAttribute('data-aos', 'fade-up')
+  const skillsCol = document.createElement('div')
+  skillsCol.className = 'col-sm-12';
+  skillsCol.setAttribute('data-aos', 'fade-up')
+  
   for (const [skill, percentage] of Object.entries(skillsData)) {
-    let skillElement = document.createElement('div')
+    const skillElement = document.createElement('div')
     skillElement.className = 'progress blue'
-    let progressLeft = document.createElement('span')
-    let progressRight = document.createElement('span')
-    let progressBarRight = document.createElement('span')
-    let progressBarLeft = document.createElement('span')
-    progressBarLeft.style = percentage >= 0.5 ? "--deg0: 0deg;--degn: " + (360 * percentage) / 2 + "deg;animation: loading-4 1.5s linear forwards 1.5s" : "animation:none"
-    let rProg = percentage >= 0.5 ? 180 : (360 * percentage) / 2
-    progressBarRight.style = "--deg0: 0deg;--degn: " + rProg + "deg;animation: loading-4 1.5s linear forwards"
-    let progressValue = document.createElement('div')
-    progressBarRight.className = 'progress-bar';
-    progressBarLeft.className = 'progress-bar';
+    
+    const progressLeft = document.createElement('span')
+    const progressBarLeft = document.createElement('span')
     progressLeft.className = 'progress-left';
-    progressRight.className = 'progress-right';
+    progressBarLeft.className = 'progress-bar';
     progressLeft.appendChild(progressBarLeft)
+    
+    const progressRight = document.createElement('span')
+    const progressBarRight = document.createElement('span')
+    progressRight.className = 'progress-right';
+    progressBarRight.className = 'progress-bar';
     progressRight.appendChild(progressBarRight)
+
+    const progressValue = document.createElement('div')
+    const text = document.createTextNode(`${skill} ${percentage * 100}%`)
     progressValue.className = 'progress-value';
-    let text = document.createTextNode(skill + ' ' + percentage * 100 + '%')
     progressValue.appendChild(text)
 
     skillElement.appendChild(progressLeft)
     skillElement.appendChild(progressRight)
     skillElement.appendChild(progressValue)
-    sideElement.appendChild(skillElement)
+    
+    skillsCol.appendChild(skillElement)
   }
-  skilsContent.appendChild(sideElement)
+  skilsContent.appendChild(skillsCol)
 
 
 
@@ -198,11 +199,15 @@
     new Waypoint({
       element: skilsContent,
       offset: '80%',
-      handler: function (direction) {
-        let progress = select('.progress .progress-bar', true);
-        progress.forEach((el) => {
-          el.style.width = el.getAttribute('aria-valuenow') + '%'
-        });
+      handler: () => {
+        let lprogress = select('.progress .progress-left .progress-bar', true);
+        let rprogress = select('.progress .progress-right .progress-bar', true);
+        let percentages = Object.values(skillsData)
+        percentages.forEach((percentage, idx) => {
+          let prog = percentage >= 0.5 ? 180 : (360 * percentage) / 2;
+          lprogress[idx].style = percentage >= 0.5 ? `--deg0: 0deg;--degn: ${(360 * percentage) / 2}deg;animation: loading-4 0.3s linear forwards 0.5s` : "animation:none";
+          rprogress[idx].style = `--deg0: 0deg;--degn: ${prog}deg;animation: loading-4 0.5s linear forwards`;
+        })
       }
     })
   }

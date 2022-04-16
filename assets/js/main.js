@@ -4,7 +4,7 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
-(function() {
+(function () {
   "use strict";
 
   /**
@@ -90,7 +90,7 @@
   /**
    * Mobile nav toggle
    */
-  on('click', '.mobile-nav-toggle', function(e) {
+  on('click', '.mobile-nav-toggle', function (e) {
     select('body').classList.toggle('mobile-nav-active')
     this.classList.toggle('bi-list')
     this.classList.toggle('bi-x')
@@ -99,7 +99,7 @@
   /**
    * Scrool with ofset on links with a class name .scrollto
    */
-  on('click', '.scrollto', function(e) {
+  on('click', '.scrollto', function (e) {
     if (select(this.hash)) {
       e.preventDefault()
 
@@ -141,15 +141,64 @@
     });
   }
 
+  let skillsData = {
+    "Java": 0.9,
+    "Kotlin": 0.7,
+    "Python": 0.8,
+    "Apache Maven": 0.9,
+    "Spring": 0.8,
+    "SpringBoot": 0.9,
+    "Docker": 0.8,
+    "Linux": 0.9,
+    "Agile": 0.8
+  }
+
+
+  let skilsContent = select('.skills-content');
+
+
+  let sideElement = document.createElement('div')
+  sideElement.className = 'col-sm-12';
+  sideElement.setAttribute('data-aos', 'fade-up')
+  for (const [skill, percentage] of Object.entries(skillsData)) {
+    let skillElement = document.createElement('div')
+    skillElement.className = 'progress blue'
+    let progressLeft = document.createElement('span')
+    let progressRight = document.createElement('span')
+    let progressBarRight = document.createElement('span')
+    let progressBarLeft = document.createElement('span')
+    progressBarLeft.style = percentage >= 0.5 ? "--deg0: 0deg;--degn: " + (360 * percentage) / 2 + "deg;animation: loading-4 1.5s linear forwards 1.5s" : "animation:none"
+    let rProg = percentage >= 0.5 ? 180 : (360 * percentage) / 2
+    progressBarRight.style = "--deg0: 0deg;--degn: " + rProg + "deg;animation: loading-4 1.5s linear forwards"
+    let progressValue = document.createElement('div')
+    progressBarRight.className = 'progress-bar';
+    progressBarLeft.className = 'progress-bar';
+    progressLeft.className = 'progress-left';
+    progressRight.className = 'progress-right';
+    progressLeft.appendChild(progressBarLeft)
+    progressRight.appendChild(progressBarRight)
+    progressValue.className = 'progress-value';
+    let text = document.createTextNode(skill + ' ' + percentage * 100 + '%')
+    progressValue.appendChild(text)
+
+    skillElement.appendChild(progressLeft)
+    skillElement.appendChild(progressRight)
+    skillElement.appendChild(progressValue)
+    sideElement.appendChild(skillElement)
+  }
+  skilsContent.appendChild(sideElement)
+
+
+
   /**
    * Skills animation
    */
-  let skilsContent = select('.skills-content');
+
   if (skilsContent) {
     new Waypoint({
       element: skilsContent,
       offset: '80%',
-      handler: function(direction) {
+      handler: function (direction) {
         let progress = select('.progress .progress-bar', true);
         progress.forEach((el) => {
           el.style.width = el.getAttribute('aria-valuenow') + '%'
@@ -170,9 +219,9 @@
 
       let portfolioFilters = select('#portfolio-flters li', true);
 
-      on('click', '#portfolio-flters li', function(e) {
+      on('click', '#portfolio-flters li', function (e) {
         e.preventDefault();
-        portfolioFilters.forEach(function(el) {
+        portfolioFilters.forEach(function (el) {
           el.classList.remove('filter-active');
         });
         this.classList.add('filter-active');
@@ -180,7 +229,7 @@
         portfolioIsotope.arrange({
           filter: this.getAttribute('data-filter')
         });
-        portfolioIsotope.on('arrangeComplete', function() {
+        portfolioIsotope.on('arrangeComplete', function () {
           AOS.refresh()
         });
       }, true);

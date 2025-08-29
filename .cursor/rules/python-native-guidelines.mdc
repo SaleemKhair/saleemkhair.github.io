@@ -1,0 +1,13 @@
+---
+description: Native Python clean‑code, testing, and packaging standards
+globs: ["**/*.py"]
+alwaysApply: false
+---
+
+- User prefers expressive, intention‑revealing names: functions and variables should clearly state purpose (e.g., `calculate_total_amount` rather than `calc`).
+- User prefers clean functions: limited to one abstraction level and single responsibility; avoid deeply nested structures.
+- User prefers test‑driven design: write pytest unit tests first, focusing on behavior and edge cases.
+- User prefers using dependency injection or parameterization over global state, improving modularity and testability.
+- User prefers securing I/O boundaries: validate inputs to scripts, parse arguments with `argparse`, and handle exceptions gracefully.
+- User prefers packaging with clear structure (`src/`, `tests/`), using `setup.py` or `pyproject.toml`, and enabling easy installation.
+- User prefers logging and observability: use structured logging, avoid `print`, log levels for clarity in CLI usage.

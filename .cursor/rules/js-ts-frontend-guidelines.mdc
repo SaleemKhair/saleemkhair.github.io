@@ -1,0 +1,14 @@
+---
+description: JavaScript/TypeScript clean architecture in React/Angular front‑end
+globs: ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"]
+alwaysApply: false
+---
+
+- User prefers strong typing when using TypeScript: always annotate props, return types, and avoid `any`; favor typed interfaces.
+- User prefers functional components (React) or modular services (Angular) with clear separation of concerns.
+- User prefers structuring code by domain or feature: components, hooks/services, and tests collocated for clarity and maintainability.
+- User prefers test‑driven front‑end: write unit tests (Jest, Jasmine) before implementation and include component snapshot or logic tests.
+- User prefers naming conventions: component names in PascalCase, event handlers prefixed with `handle` (e.g., `handleClick`), boolean flags as `isX`.
+- User prefers clean code: components short and focused, use early returns, split large logic into custom hooks or services.
+- User prefers secure defaults: sanitize user input, avoid dangerous DOM operations, use accessibility best practices (aria‑attributes).
+- User prefers observability: meaningful logs or analytics hooks in user event handlers to track critical flows.

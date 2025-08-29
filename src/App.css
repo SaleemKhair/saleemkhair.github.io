@@ -1,0 +1,487 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    sans-serif;
+  line-height: 1.6;
+  color: #2d3748;
+  background: #f7fafc;
+}
+
+.App {
+  min-height: 100vh;
+}
+
+/* Background gradient with professional fintech colors */
+.background-gradient {
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    #1a365d 0%,
+    #2c5282 25%,
+    #3182ce 50%,
+    #4299e1 75%,
+    #63b3ed 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.background-gradient::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.content-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.resume-container {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  padding: 3rem;
+  margin: 2rem 0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Section styling */
+.section {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a365d;
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #3182ce, #63b3ed);
+  border-radius: 2px;
+}
+
+/* Header section */
+.header-section {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.header-name {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a365d;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 4px rgba(26, 54, 93, 0.1);
+}
+
+.header-title {
+  font-size: 1.25rem;
+  color: #4a5568;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.header-contact {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  font-size: 0.95rem;
+  color: #718096;
+}
+
+.header-contact a {
+  color: #3182ce;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0.75rem;
+}
+
+.header-contact a:hover {
+  color: #1a365d;
+  text-decoration: underline;
+}
+
+.header-contact a svg {
+  color: #3182ce;
+  stroke-width: 1.5px;
+}
+
+.header-contact a:hover svg {
+  color: #1a365d;
+}
+
+.header-contact-link {
+  color: #3182ce;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0.75rem;
+}
+
+.header-contact-link:hover {
+  color: #1a365d;
+  text-decoration: underline;
+}
+
+/* Responsive header contact */
+@media (max-width: 768px) {
+  .header-contact {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .header-contact a,
+  .header-contact-link {
+    margin: 0;
+    justify-content: center;
+  }
+
+  .header-contact a svg {
+    flex-shrink: 0;
+  }
+}
+
+/* Experience section */
+.experience-item {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: rgba(247, 250, 252, 0.8);
+  border-radius: 12px;
+  border-left: 4px solid #3182ce;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.experience-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.job-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1a365d;
+  margin-bottom: 0.5rem;
+}
+
+.company-info {
+  font-size: 1rem;
+  color: #4a5568;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.job-description {
+  list-style: none;
+  margin-bottom: 1rem;
+}
+
+.job-description li {
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  position: relative;
+  color: #2d3748;
+}
+
+.job-description li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: #3182ce;
+  font-weight: bold;
+}
+
+.tech-stack {
+  font-size: 0.9rem;
+  color: #718096;
+  font-style: italic;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+/* Skills section */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.skill-category {
+  background: rgba(247, 250, 252, 0.8);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.skill-category strong {
+  color: #1a365d;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.skill-category span {
+  color: #4a5568;
+  font-size: 0.95rem;
+}
+
+/* Education and Languages */
+.education-item,
+.languages-list {
+  background: rgba(247, 250, 252, 0.8);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.education-degree {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1a365d;
+  margin-bottom: 0.5rem;
+}
+
+.education-school {
+  color: #4a5568;
+  font-size: 1rem;
+}
+
+.languages-list {
+  list-style: none;
+}
+
+.languages-list li {
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.languages-list li::before {
+  content: "🌐";
+  position: absolute;
+  left: 0;
+}
+
+/* References */
+.references-content {
+  background: rgba(247, 250, 252, 0.8);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  text-align: center;
+}
+
+.references-content a {
+  color: #3182ce;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.references-content a:hover {
+  color: #1a365d;
+  text-decoration: underline;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .resume-container {
+    padding: 2rem 1.5rem;
+    margin: 1rem 0;
+  }
+
+  .header-name {
+    font-size: 2rem;
+  }
+
+  .header-contact {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .content-container {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .resume-container {
+    padding: 1.5rem 1rem;
+  }
+
+  .header-name {
+    font-size: 1.75rem;
+  }
+
+  .section-title {
+    font-size: 1.25rem;
+  }
+}
+
+/* Animation classes */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scroll animations */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+
+.scroll-animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Loading animation */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #1a365d, #3182ce);
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid #ffffff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Download buttons responsive design */
+@media (max-width: 768px) {
+  .download-buttons {
+    position: fixed !important;
+    top: 10px !important;
+    right: 10px !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+
+  .download-btn {
+    padding: 10px 12px !important;
+    font-size: 12px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .download-buttons {
+    top: 5px !important;
+    right: 5px !important;
+  }
+
+  .download-btn {
+    padding: 8px 10px !important;
+    font-size: 11px !important;
+  }
+}
+
+/* PDF Generation - Hidden cloned container */
+.pdf-clone {
+  position: absolute !important;
+  left: -9999px !important;
+  top: 0 !important;
+  z-index: -1 !important;
+  visibility: hidden !important;
+}
+
+/* PDF-specific styling to ensure proper rendering */
+.pdf-mode .header-name {
+  color: #1a365d !important;
+  text-shadow: none !important;
+  background-image: none !important;
+  -webkit-background-clip: initial !important;
+  -webkit-text-fill-color: initial !important;
+  background-clip: initial !important;
+}
+
+.pdf-mode .resume-container {
+  height: auto !important;
+  overflow: visible !important;
+  position: relative !important;
+  background: white !important;
+  backdrop-filter: none !important;
+}
+
+.pdf-mode .section {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+  animation: none !important;
+  transition: none !important;
+}
+
+.pdf-mode * {
+  animation: none !important;
+  transition: none !important;
+}

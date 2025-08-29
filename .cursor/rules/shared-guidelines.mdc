@@ -1,0 +1,13 @@
+---
+description: Shared language‑agnostic best practices (SOLID, clean code, TDD, observability, security)
+globs: ["**/*.*"]
+alwaysApply: true
+---
+
+- User prefers following SOLID and clean‑code principles: design for single responsibility, open‑closed, and dependency‑inversion to maintain scalability.
+- User prefers test‑driven development: write first tests covering behavior, use mocking and integration tests to validate end‑to‑end logic.
+- User prefers refactoring supported by tests: continuously improve code structure without changing functionality.
+- User prefers self‑documenting code: meaningful names and structure; comments only to explain intent or rationale, not what the code does.
+- User prefers observability by design: include logging, metrics, and error tracing in all code layers, enabling easier diagnosis and reliability.
+- User prefers secure defaults: validate inputs, sanitize outputs, manage secrets securely—not in code, ensure compliance standards are met as applicable.
+- User prefers consistent style and formatting: enforce via linters or formatters integrated in CI pipelines to reduce stylistic inconsistencies.

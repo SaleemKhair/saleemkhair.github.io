@@ -1,0 +1,13 @@
+---
+description: jVM Spring + JPA clean‑architecture & best practices
+globs: ["**/*.java", "**/src/main/java/**/*.java"]
+alwaysApply: false
+---
+
+- User prefers organizing code following clean architecture: controllers, services, repositories, domain layers separated, each with a single responsibility.
+- User prefers using dependency inversion: inject interfaces (e.g., repository interfaces) into services, not concrete implementations, enabling testability and flexibility.
+- User prefers tests written before implementation (TDD): unit‑test services using mocks, integration tests for JPA repositories, ensuring behavior-first development.
+- User prefers self‑documenting names: use expressive method names (e.g., findActiveUsersCreatedAfter), avoid generic names like handle or process.
+- User prefers using DTOs and mapping layers to decouple entities from external API representations.
+- User prefers consistent error handling: use central exception handlers (e.g., `@ControllerAdvice`) and map exceptions to clear responses.
+- User prefers secure defaults: validate input, avoid lazy‑loading pitfalls, protect against injection by using parameterized queries or JPA criteria.

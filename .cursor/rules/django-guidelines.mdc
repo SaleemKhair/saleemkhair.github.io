@@ -1,0 +1,13 @@
+---
+description: Django project architecture, testing, and clean code standards
+globs: ["**/models.py", "**/views.py", "**/serializers.py", "**/tests.py"]
+alwaysApply: false
+---
+
+- User prefers keeping business logic outside views: use services or domain modules to encapsulate behavior, keeping views thin.
+- User prefers writing tests first: use Django's `TestCase` or `pytest` to drive model, view, and API design.
+- User prefers organizing code into apps with clear responsibilities and reuse, avoiding extremely large apps.
+- User prefers using Django forms or serializers for validation, keeping data validation close to entry points.
+- User prefers explicit querysets and avoiding magic ORM chains; use `select_related`/`prefetch_related` for performance.
+- User prefers naming: views end with `_view`, forms with `Form`, serializers with `Serializer`, ensuring clarity.
+- User prefers enforcing migrations and schema changes through CI and using `check` for model validation.

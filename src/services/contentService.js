@@ -1,5 +1,3 @@
-
-
 /**
  * Content Management Service
  * Handles loading and managing markdown content for the resume sections
@@ -152,9 +150,7 @@ class ContentService {
 
 [Amman, Jordan](location) [saleemkhair@gmail.com](mailto:saleemkhair@gmail.com) [+962-79-604-9560](tel:+962796049560) [LinkedIn](https://www.linkedin.com/in/saleem-khair-359795108)`,
 
-      experience: `## PROFESSIONAL EXPERIENCE
-
-### Senior Software Engineer | Driving Principal-Level Initiatives
+      experience: `### Senior Software Engineer | Driving Principal-Level Initiatives
 **Tamatem Games** — on-premise | **May 2021 – Present**
 
 * Designed and built a unified payment integration service handling over **100,000+ transactions** and **$1.7M+ TPV** across providers like **Tap, Fawry, Buko (Fortumo), Coda, Razor, and MoneyHash**.
@@ -205,8 +201,7 @@ class ContentService {
 * Built automated **UI test suites** using **Selenium** and **Appium**.
 * Conducted **regression** and **black-box testing** on web/mobile platforms.`,
 
-      skills: `## TECHNICAL SKILLS
-
+      skills: `
 **Languages:** Python, Java, Kotlin, Scala  
 **Frameworks:** FastAPI, Spring, Spring Boot, JPA, Hibernate  
 **Cloud & Infra:** AWS (Lambda, SQS, RDS, CodeBuild, S3, EKS), Docker, Docker Compose, Prometheus, Grafana, Jaeger, Loki  
@@ -215,17 +210,17 @@ class ContentService {
 **Testing:** Selenium, Appium, JUnit, pytest, SonarQube  
 **Others:** Apache Camel, JMS, ActiveMQ, RabbitMQ, Linux`,
 
-      education: `## EDUCATION
+      education: `
 
 **Bachelor of Computer Information Systems**  
 University of Jordan — **2015**`,
 
-      languages: `## LANGUAGES
+      languages: `
 
 * **Arabic** – Native
 * **English** – Fluent`,
 
-      references: `## REFERENCES
+      references: `
 
 Available upon request or on [LinkedIn](https://www.linkedin.com/in/saleem-khair-359795108)`,
     };

@@ -309,7 +309,11 @@ body {
 }
 
 .skill-category {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(247, 250, 252, 0.8) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(247, 250, 252, 0.8) 100%
+  );
   padding: 2rem;
   border-radius: 16px;
   border: 1px solid rgba(226, 232, 240, 0.6);
@@ -320,7 +324,7 @@ body {
 }
 
 .skill-category::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -347,7 +351,7 @@ body {
 }
 
 .skill-category strong::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -407,7 +411,7 @@ body {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-  
+
   .skill-category {
     padding: 1.5rem;
   }

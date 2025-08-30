@@ -737,14 +737,42 @@ body {
     padding: 1.5rem;
     margin-bottom: 1.5rem;
     border-radius: 12px;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
   }
-
+  
   .section-title {
     font-size: 1.3rem;
     margin-bottom: 1.25rem;
   }
-
+  
   .content-container {
     padding: 1rem 0.5rem;
+    max-width: 100%;
+  }
+  
+  .resume-container {
+    padding: 1rem 0;
+    margin: 1rem 0;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  .section,
+  .header-section {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+  }
+  
+  .content-container {
+    padding: 0.5rem 0.25rem;
+  }
+  
+  .section-title {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
   }
 }

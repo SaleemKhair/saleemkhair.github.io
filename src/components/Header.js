@@ -38,7 +38,7 @@ const Header = () => {
   };
 
   return (
-    <motion.header
+    <motion.div
       ref={ref}
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
@@ -132,7 +132,7 @@ const Header = () => {
       <meta itemProp="author" content="Saleem Khair" />
       <meta itemProp="datePublished" content="2025-01-01T00:00:00Z" />
       <meta itemProp="dateModified" content="2025-08-30T00:00:00Z" />
-    </motion.header>
+    </motion.div>
   );
 };
 

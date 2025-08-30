@@ -1,4 +1,4 @@
-import React from "react";
+
 
 /**
  * Content Management Service
@@ -157,7 +157,7 @@ class ContentService {
 ### Senior Software Engineer | Driving Principal-Level Initiatives
 **Tamatem Games** — on-premise | **May 2021 – Present**
 
-* Designed and built a unified payment integration service handling over **100,000+ transactions** and **\$1.7M+ TPV** across providers like **Tap, Fawry, Buko (Fortumo), Coda, Razor, and MoneyHash**.
+* Designed and built a unified payment integration service handling over **100,000+ transactions** and **$1.7M+ TPV** across providers like **Tap, Fawry, Buko (Fortumo), Coda, Razor, and MoneyHash**.
 * Led backend architecture and API design for payment workflows used by internal and external clients.
 * Collaborated with DevOps and product teams to optimize **scalability**, **fault-tolerance**, and **deployment strategies**.
 * Managed a **team of 6 engineers** (senior to junior) and handled the full development lifecycle of multiple services.

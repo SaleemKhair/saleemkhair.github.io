@@ -6,7 +6,6 @@ import { contentService } from "../services";
 import {
   isAnimationEnabled,
   getAnimationConfig,
-  getColor,
 } from "../config/theme";
 
 /**

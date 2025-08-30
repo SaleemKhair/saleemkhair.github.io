@@ -116,6 +116,7 @@ class PDFService {
     document.body.style.overflow = "hidden";
 
     // Force reflow
+    // eslint-disable-next-line no-unused-vars
     const _ = container.offsetHeight;
 
     // Wait for animations to settle

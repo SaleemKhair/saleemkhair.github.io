@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import DynamicSectionRenderer from "./components/DynamicSectionRenderer";
+import Header from "./components/Header";
 import { getSectionKeys } from "./config/sections";
 import { ThemeProvider } from "./components/ThemeProvider";
 import "./App.css";
@@ -21,17 +22,7 @@ function App() {
               itemScope
               itemType="https://schema.org/Article"
             >
-              <header className="resume-header">
-                <meta itemProp="author" content="Saleem Khair" />
-                <meta itemProp="datePublished" content="2025-01-01T00:00:00Z" />
-                <meta itemProp="dateModified" content="2025-08-30T00:00:00Z" />
-                <meta itemProp="publisher" content="Saleem Khair" />
-                <meta itemProp="articleSection" content="Professional Resume" />
-                <meta
-                  itemProp="keywords"
-                  content="Backend Engineer, FinTech, Payment Systems, Resume, Portfolio"
-                />
-              </header>
+              <Header />
 
               <main className="resume-content" itemProp="articleBody">
                 {sectionKeys.map((sectionKey) => (

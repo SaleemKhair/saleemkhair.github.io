@@ -2,7 +2,6 @@ import React from "react";
 import { getSectionConfig } from "../config/sections";
 import SectionComponent from "./SectionComponent";
 import SectionItemComponent from "./SectionItemComponent";
-import Header from "./Header";
 
 /**
  * Dynamic Section Renderer
@@ -16,7 +15,7 @@ const DynamicSectionRenderer = ({ sectionKey, ...props }) => {
   if (config.type === "special") {
     switch (config.component) {
       case "Header":
-        return <Header {...props} />;
+        return null;
       default:
         return <div>Unknown special component: {config.component}</div>;
     }
@@ -64,4 +63,3 @@ const DynamicSectionRenderer = ({ sectionKey, ...props }) => {
 };
 
 export default DynamicSectionRenderer;
-

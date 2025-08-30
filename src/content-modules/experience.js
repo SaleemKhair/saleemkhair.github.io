@@ -47,6 +47,8 @@ export const experienceContent = `
 - Developed modules for **Bill Presentment and Payment** used by regional banks and payment providers.
 - Practiced **agile engineering** with **TDD**, **Clean Code**, **Clean Architecture**, **pair-programming**, and design documentation.
 
+**Tech Stack:** Java, Spring, Docker, Docker Compose, JSP, JPA, Hibernate, MySQL, Apache Camel, JMS, ActiveMQ, Jenkins
+
 ---
 
 ### Quality Assurance Analyst - Automation Engineer

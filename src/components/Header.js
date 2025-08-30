@@ -37,7 +37,7 @@ const Header = () => {
   };
 
   return (
-    <motion.div
+    <motion.header
       ref={ref}
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
@@ -128,7 +128,7 @@ const Header = () => {
           {content}
         </ReactMarkdown>
       </div>
-    </motion.div>
+    </motion.header>
   );
 };
 

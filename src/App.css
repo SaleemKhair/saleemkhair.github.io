@@ -61,6 +61,29 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+/* Resume Header for Reader Mode */
+.resume-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.resume-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a365d;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 4px rgba(26, 54, 93, 0.1);
+}
+
+.resume-header p {
+  font-size: 1.25rem;
+  color: #4a5568;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
 .resume-content {
   margin-bottom: 2rem;
 }
@@ -593,4 +616,38 @@ body {
     animation: none !important;
     transition: none !important;
   }
+}
+
+/* Enhanced Reader Mode Support */
+@media (max-width: 768px) {
+  .resume-header h1 {
+    font-size: 2rem;
+  }
+  
+  .resume-header p {
+    font-size: 1.1rem;
+  }
+}
+
+/* Reader Mode Content Structure */
+.resume-container {
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.resume-content {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* Ensure good contrast for Reader Mode */
+.section-title {
+  color: #1a365d !important;
+  font-weight: 700 !important;
+}
+
+.section p, .section li {
+  color: #2d3748 !important;
+  line-height: 1.6 !important;
 }

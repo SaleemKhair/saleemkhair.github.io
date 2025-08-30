@@ -300,31 +300,117 @@ body {
   margin: 1.5rem 0 !important;
 }
 
-/* Skills section */
+/* Enhanced Skills section */
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 1.5rem;
 }
 
 .skill-category {
-  background: rgba(247, 250, 252, 0.8);
-  padding: 1.5rem;
-  border-radius: 12px;
-  border: 1px solid #e2e8f0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(247, 250, 252, 0.8) 100%);
+  padding: 2rem;
+  border-radius: 16px;
+  border: 1px solid rgba(226, 232, 240, 0.6);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-category::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #3182ce, #63b3ed, #4299e1);
+  border-radius: 16px 16px 0 0;
+}
+
+.skill-category:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  border-color: rgba(49, 130, 206, 0.3);
 }
 
 .skill-category strong {
   color: #1a365d;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 1.1rem;
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.skill-category strong::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, #3182ce, #63b3ed);
+  border-radius: 1px;
 }
 
 .skill-category span {
   color: #4a5568;
   font-size: 0.95rem;
+  line-height: 1.6;
+  display: inline-block;
+  margin: 0.25rem 0.5rem 0.25rem 0;
+  padding: 0.25rem 0.75rem;
+  background: rgba(49, 130, 206, 0.1);
+  border-radius: 20px;
+  border: 1px solid rgba(49, 130, 206, 0.2);
+  transition: all 0.2s ease;
+}
+
+.skill-category span:hover {
+  background: rgba(49, 130, 206, 0.15);
+  border-color: rgba(49, 130, 206, 0.3);
+  transform: scale(1.05);
+}
+
+/* Skill proficiency indicators */
+.skill-category .skill-level {
+  display: flex;
+  align-items: center;
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: #718096;
+}
+
+.skill-category .skill-level .level-bar {
+  flex: 1;
+  height: 6px;
+  background: rgba(226, 232, 240, 0.8);
+  border-radius: 3px;
+  margin-left: 0.75rem;
+  overflow: hidden;
+}
+
+.skill-category .skill-level .level-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3182ce, #63b3ed);
+  border-radius: 3px;
+  transition: width 0.8s ease;
+}
+
+/* Responsive skills grid */
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .skill-category {
+    padding: 1.5rem;
+  }
 }
 
 /* Education and Languages */

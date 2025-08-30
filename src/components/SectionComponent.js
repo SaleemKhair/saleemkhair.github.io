@@ -3,10 +3,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import ReactMarkdown from "react-markdown";
 import { contentService } from "../services";
-import {
-  isAnimationEnabled,
-  getAnimationConfig,
-} from "../config/theme";
+import { isAnimationEnabled, getAnimationConfig } from "../config/theme";
 
 /**
  * Abstract Section Component

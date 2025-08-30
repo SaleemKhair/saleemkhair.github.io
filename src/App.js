@@ -23,11 +23,13 @@ function App() {
               itemScope
               itemType="https://schema.org/Person"
             >
-              <header className="resume-header" itemProp="name">
+              {/* <header className="resume-header" itemProp="name">
                 <h1>Saleem Khair</h1>
-                <p itemProp="jobTitle">Senior Backend Engineer | FinTech & Payment Systems Expert</p>
-              </header>
-              
+                <p itemProp="jobTitle">
+                  Senior Backend Engineer | FinTech & Payment Systems Expert
+                </p>
+              </header> */}
+
               <main className="resume-content">
                 {sectionKeys.map((sectionKey) => (
                   <DynamicSectionRenderer
@@ -36,7 +38,7 @@ function App() {
                   />
                 ))}
               </main>
-              
+
               <footer className="resume-footer">
                 <p>&copy; 2025 Saleem Khair. All rights reserved.</p>
               </footer>

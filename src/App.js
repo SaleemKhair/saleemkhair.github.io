@@ -21,16 +21,6 @@ function App() {
               itemScope
               itemType="https://schema.org/Article"
             >
-              <header className="resume-header">
-                <h1 itemProp="headline">Saleem Khair</h1>
-                <p itemProp="description">
-                  Senior Backend Engineer | FinTech & Payment Systems Expert
-                </p>
-                <meta itemProp="author" content="Saleem Khair" />
-                <meta itemProp="datePublished" content="2025-01-01T00:00:00Z" />
-                <meta itemProp="dateModified" content="2025-08-30T00:00:00Z" />
-              </header>
-
               <main className="resume-content" itemProp="articleBody">
                 {sectionKeys.map((sectionKey) => (
                   <DynamicSectionRenderer

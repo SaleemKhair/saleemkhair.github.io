@@ -38,7 +38,7 @@ const Header = () => {
   };
 
   return (
-    <motion.div
+    <motion.header
       ref={ref}
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
@@ -49,12 +49,20 @@ const Header = () => {
         <ReactMarkdown
           components={{
             h1: ({ children }) => (
-              <motion.h1 variants={itemVariants} className="header-name">
+              <motion.h1
+                variants={itemVariants}
+                className="header-name"
+                itemProp="headline"
+              >
                 {children}
               </motion.h1>
             ),
             h2: ({ children }) => (
-              <motion.h2 variants={itemVariants} className="header-title">
+              <motion.h2
+                variants={itemVariants}
+                className="header-title"
+                itemProp="description"
+              >
                 {children}
               </motion.h2>
             ),
@@ -121,7 +129,10 @@ const Header = () => {
           {content}
         </ReactMarkdown>
       </div>
-    </motion.div>
+      <meta itemProp="author" content="Saleem Khair" />
+      <meta itemProp="datePublished" content="2025-01-01T00:00:00Z" />
+      <meta itemProp="dateModified" content="2025-08-30T00:00:00Z" />
+    </motion.header>
   );
 };
 

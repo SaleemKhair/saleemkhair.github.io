@@ -623,7 +623,7 @@ body {
   .resume-header h1 {
     font-size: 2rem;
   }
-  
+
   .resume-header p {
     font-size: 1.1rem;
   }
@@ -647,7 +647,8 @@ body {
   font-weight: 700 !important;
 }
 
-.section p, .section li {
+.section p,
+.section li {
   color: #2d3748 !important;
   line-height: 1.6 !important;
 }

@@ -61,7 +61,26 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+/* Resume Header - Hidden visually but accessible to crawlers and Reader Mode */
+.resume-header {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
 
+.resume-header h1,
+.resume-header p {
+  margin: 0;
+  padding: 0;
+  font-size: 1px;
+  line-height: 1;
+}
 
 .resume-content {
   margin-bottom: 2rem;
@@ -596,8 +615,6 @@ body {
     transition: none !important;
   }
 }
-
-
 
 /* Reader Mode Content Structure */
 .resume-container {

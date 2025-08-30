@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { contentService } from "../services";
 import {
   isAnimationEnabled,
@@ -139,7 +140,7 @@ const SectionItemComponent = ({
       )}
 
       <div className={itemContainerClassName}>
-        <ReactMarkdown components={finalComponents}>{content}</ReactMarkdown>
+        <ReactMarkdown components={finalComponents} remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
       </div>
     </motion.div>
   );

@@ -1,4 +1,4 @@
-export const experienceContent = `## PROFESSIONAL EXPERIENCE
+export const experienceContent = `
 
 ### Senior Software Engineer | Driving Principal-Level Initiatives
 

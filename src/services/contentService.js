@@ -8,6 +8,7 @@ import {
   skillsContent,
   educationContent,
   referencesContent,
+  languagesContent,
 } from "../content-modules";
 
 class ContentService {
@@ -19,6 +20,7 @@ class ContentService {
       skills: skillsContent,
       education: educationContent,
       references: referencesContent,
+      languages: languagesContent,
     };
     this.config = {
       cacheEnabled: true,

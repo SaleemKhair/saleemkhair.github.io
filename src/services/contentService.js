@@ -7,8 +7,8 @@ import {
   experienceContent,
   skillsContent,
   educationContent,
-  referencesContent
-} from '../content-modules';
+  referencesContent,
+} from "../content-modules";
 
 class ContentService {
   constructor() {
@@ -18,7 +18,7 @@ class ContentService {
       experience: experienceContent,
       skills: skillsContent,
       education: educationContent,
-      references: referencesContent
+      references: referencesContent,
     };
     this.config = {
       cacheEnabled: true,
@@ -94,8 +94,6 @@ class ContentService {
     return this.getErrorMessage(filename);
   }
 
-
-
   /**
    * Validate filename
    * @param {string} filename - Filename to validate
@@ -121,8 +119,6 @@ class ContentService {
     console.warn(`Content not found for filename: ${filename}`);
     return `# Content not found for ${filename}\n\nPlease check the file exists and is accessible.`;
   }
-
-
 
   /**
    * Clear content cache
@@ -166,8 +162,6 @@ class ContentService {
   getAvailableContent() {
     return Object.keys(this.contentModules);
   }
-
-
 }
 
 // Export singleton instance

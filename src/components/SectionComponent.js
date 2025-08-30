@@ -154,7 +154,7 @@ const SectionComponent = ({
   const finalComponents = { ...defaultComponents, ...customComponents };
 
   return (
-    <motion.div
+    <motion.section
       ref={ref}
       initial={animationsEnabled ? "hidden" : "visible"}
       animate={inView && animationsEnabled ? "visible" : "visible"}
@@ -177,7 +177,7 @@ const SectionComponent = ({
       <div className={contentClassName || `${className}-content`}>
         <ReactMarkdown components={finalComponents}>{content}</ReactMarkdown>
       </div>
-    </motion.div>
+    </motion.section>
   );
 };
 

@@ -15,19 +15,32 @@ function App() {
         <DownloadButtons />
         <div className="background-gradient">
           <div className="content-container">
-            <motion.div
+            <motion.article
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               className="resume-container"
+              itemScope
+              itemType="https://schema.org/Person"
             >
-              {sectionKeys.map((sectionKey) => (
-                <DynamicSectionRenderer
-                  key={sectionKey}
-                  sectionKey={sectionKey}
-                />
-              ))}
-            </motion.div>
+              <header className="resume-header" itemProp="name">
+                <h1>Saleem Khair</h1>
+                <p itemProp="jobTitle">Senior Backend Engineer | FinTech & Payment Systems Expert</p>
+              </header>
+              
+              <main className="resume-content">
+                {sectionKeys.map((sectionKey) => (
+                  <DynamicSectionRenderer
+                    key={sectionKey}
+                    sectionKey={sectionKey}
+                  />
+                ))}
+              </main>
+              
+              <footer className="resume-footer">
+                <p>&copy; 2025 Saleem Khair. All rights reserved.</p>
+              </footer>
+            </motion.article>
           </div>
         </div>
       </div>

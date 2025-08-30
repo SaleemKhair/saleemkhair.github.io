@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
 import { MapPin, Mail, Phone, Linkedin } from "lucide-react";
 import { contentService } from "../services";
 
@@ -47,7 +46,6 @@ const Header = () => {
     >
       <div className="header-content">
         <ReactMarkdown
-          remarkPlugins={[remarkGfm]}
           components={{
             h1: ({ children }) => (
               <motion.h1

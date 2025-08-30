@@ -1,168 +1,300 @@
-/**
- * Content Management Service
- * Handles loading and managing markdown content for the resume sections
- */
-import {
-  headerContent,
-  experienceContent,
-  skillsContent,
-  educationContent,
-  referencesContent,
-  languagesContent,
-} from "../content-modules";
+import resumeData from '../data/resume.json';
 
+/**
+ * JSON-based Content Service
+ * 
+ * This service provides a single source of truth for all resume content
+ * by loading from JSON data and providing DTO-based access patterns.
+ * 
+ * Benefits:
+ * - Single source of truth (JSON file)
+ * - Type-safe data access
+ * - Easy to maintain and update
+ * - Supports multiple output formats (markdown, PDF, etc.)
+ * - Extensible for future content types
+ */
 class ContentService {
   constructor() {
-    this.contentCache = new Map();
-    this.contentModules = {
-      header: headerContent,
-      experience: experienceContent,
-      skills: skillsContent,
-      education: educationContent,
-      references: referencesContent,
-      languages: languagesContent,
-    };
-    this.config = {
-      cacheEnabled: true,
-    };
+    this.data = resumeData;
+    this.cache = new Map();
+  }
+
+  // ===== DATA ACCESS METHODS (DTO Pattern) =====
+
+  /**
+   * Get header information
+   * @returns {Object} Header DTO
+   */
+  getHeader() {
+    return { ...this.data.header };
   }
 
   /**
-   * Load markdown content from module
-   * @param {string} filename - Name of the content module
-   * @param {Object} options - Loading options
-   * @returns {Promise<string>} - Markdown content
+   * Get all experience entries
+   * @returns {Array} Array of experience DTOs
    */
-  async loadMarkdownContent(filename, options = {}) {
-    if (!this.validateFilename(filename)) {
-      return this.getErrorMessage(filename);
+  getExperience() {
+    return [...this.data.experience];
+  }
+
+  /**
+   * Get specific experience entry by index
+   * @param {number} index - Experience entry index
+   * @returns {Object} Experience DTO
+   */
+  getExperienceEntry(index) {
+    if (index >= 0 && index < this.data.experience.length) {
+      return { ...this.data.experience[index] };
+    }
+    return null;
+  }
+
+  /**
+   * Get skills organized by category
+   * @returns {Object} Skills DTO
+   */
+  getSkills() {
+    return { ...this.data.skills };
+  }
+
+  /**
+   * Get education information
+   * @returns {Object} Education DTO
+   */
+  getEducation() {
+    return { ...this.data.education };
+  }
+
+  /**
+   * Get languages
+   * @returns {Array} Array of language DTOs
+   */
+  getLanguages() {
+    return [...this.data.languages];
+  }
+
+  /**
+   * Get references
+   * @returns {string} References text
+   */
+  getReferences() {
+    return this.data.references;
+  }
+
+  /**
+   * Get all content as a single DTO
+   * @returns {Object} Complete resume DTO
+   */
+  getAllContent() {
+    return {
+      header: this.getHeader(),
+      experience: this.getExperience(),
+      skills: this.getSkills(),
+      education: this.getEducation(),
+      languages: this.getLanguages(),
+      references: this.getReferences()
+    };
+  }
+
+  // ===== FORMAT CONVERSION METHODS =====
+
+  /**
+   * Generate markdown content for any section
+   * @param {string} section - Section name
+   * @returns {string} Markdown content
+   */
+  generateMarkdown(section) {
+    const cacheKey = `markdown_${section}`;
+    if (this.cache.has(cacheKey)) {
+      return this.cache.get(cacheKey);
     }
 
-    const config = { ...this.config, ...options };
-
-    // Check cache first
-    if (config.cacheEnabled && this.contentCache.has(filename)) {
-      return this.contentCache.get(filename);
+    let markdown = '';
+    switch (section) {
+      case 'header':
+        markdown = this.generateHeaderMarkdown();
+        break;
+      case 'experience':
+        markdown = this.generateExperienceMarkdown();
+        break;
+      case 'skills':
+        markdown = this.generateSkillsMarkdown();
+        break;
+      case 'education':
+        markdown = this.generateEducationMarkdown();
+        break;
+      case 'languages':
+        markdown = this.generateLanguagesMarkdown();
+        break;
+      case 'references':
+        markdown = this.generateReferencesMarkdown();
+        break;
+      default:
+        markdown = '';
     }
 
-    // Get content from module
-    const content = this.getContentFromModule(filename);
+    this.cache.set(cacheKey, markdown);
+    return markdown;
+  }
 
-    // Cache the content
-    if (config.cacheEnabled) {
-      this.contentCache.set(filename, content);
+  /**
+   * Generate complete markdown resume
+   * @returns {string} Complete markdown resume
+   */
+  generateFullMarkdown() {
+    const cacheKey = 'markdown_full';
+    if (this.cache.has(cacheKey)) {
+      return this.cache.get(cacheKey);
     }
 
+    const sections = ['header', 'experience', 'skills', 'education', 'languages', 'references'];
+    const markdown = sections.map(section => this.generateMarkdown(section)).join('\n\n');
+    
+    this.cache.set(cacheKey, markdown);
+    return markdown;
+  }
+
+  /**
+   * Get content optimized for PDF generation (plain text without markdown)
+   * @returns {Object} PDF-optimized content DTO
+   */
+  getPDFContent() {
+    const cacheKey = 'pdf_content';
+    if (this.cache.has(cacheKey)) {
+      return this.cache.get(cacheKey);
+    }
+
+    const content = {
+      header: this.getHeader(),
+      experience: this.getExperience().map(job => ({
+        ...job,
+        achievements: job.achievements.map(achievement => 
+          achievement.replace(/\*\*(.*?)\*\*/g, '$1')
+        )
+      })),
+      skills: this.getSkills(),
+      education: this.getEducation(),
+      languages: this.getLanguages(),
+      references: this.getReferences()
+    };
+
+    this.cache.set(cacheKey, content);
     return content;
   }
 
+  // ===== PRIVATE MARKDOWN GENERATION METHODS =====
+
+  generateHeaderMarkdown() {
+    const header = this.data.header;
+    return `# ${header.name}\n\n${header.title}\n\n---\n\n**Location**: ${header.location}\n\n**Email**: [${header.email}](mailto:${header.email})\n\n**Mobile No.**: [${header.phone}](tel:${header.phone})\n\n[**LinkedIn Profile**](${header.linkedin})\n\n---`;
+  }
+
+  generateExperienceMarkdown() {
+    let markdown = '## PROFESSIONAL EXPERIENCE\n\n';
+    
+    this.data.experience.forEach(job => {
+      markdown += `### ${job.title}\n\n**${job.company}** — ${job.location} | **${job.period}**\n\n`;
+      
+      job.achievements.forEach(achievement => {
+        markdown += `- ${achievement}\n`;
+      });
+      
+      markdown += `\n**Tech Stack**: ${job.techStack}\n\n---\n\n`;
+    });
+    
+    return markdown.trim();
+  }
+
+  generateSkillsMarkdown() {
+    const skills = this.data.skills;
+    let markdown = '## TECHNICAL SKILLS\n\n';
+    
+    Object.entries(skills).forEach(([category, items]) => {
+      const categoryName = category.charAt(0).toUpperCase() + category.slice(1);
+      markdown += `**${categoryName}**: ${items.join(', ')}\n\n`;
+    });
+    
+    return markdown.trim();
+  }
+
+  generateEducationMarkdown() {
+    const education = this.data.education;
+    return `## EDUCATION\n\n**${education.degree}**\n\n${education.school} — **${education.year}**`;
+  }
+
+  generateLanguagesMarkdown() {
+    let markdown = '## LANGUAGES\n\n';
+    this.data.languages.forEach(lang => {
+      markdown += `- **${lang.name}** – ${lang.level}\n`;
+    });
+    return markdown.trim();
+  }
+
+  generateReferencesMarkdown() {
+    return `## REFERENCES\n\n${this.data.references} or on [LinkedIn](${this.data.header.linkedin})`;
+  }
+
+  // ===== UTILITY METHODS =====
+
   /**
-   * Get markdown content from module (synchronous)
-   * @param {string} filename - Name of the content module
-   * @returns {string} - Markdown content
+   * Get available content sections
+   * @returns {Array} List of available section names
    */
-  getMarkdownContent(filename) {
-    if (!this.validateFilename(filename)) {
-      return this.getErrorMessage(filename);
-    }
-
-    // Check cache first
-    if (this.config.cacheEnabled && this.contentCache.has(filename)) {
-      return this.contentCache.get(filename);
-    }
-
-    // Get content from module
-    const content = this.getContentFromModule(filename);
-
-    // Cache the content
-    if (this.config.cacheEnabled) {
-      this.contentCache.set(filename, content);
-    }
-
-    return content;
+  getAvailableContent() {
+    return ['header', 'experience', 'skills', 'education', 'languages', 'references'];
   }
 
   /**
-   * Get content from module
-   * @param {string} filename - Name of the content module
-   * @returns {string} - Markdown content
-   */
-  getContentFromModule(filename) {
-    if (this.contentModules[filename]) {
-      return this.contentModules[filename];
-    }
-
-    console.warn(`Content module not found for: ${filename}`);
-    return this.getErrorMessage(filename);
-  }
-
-  /**
-   * Validate filename
-   * @param {string} filename - Filename to validate
-   * @returns {boolean} - Whether filename is valid
-   */
-  validateFilename(filename) {
-    return (
-      filename && typeof filename === "string" && filename.trim().length > 0
-    );
-  }
-
-  /**
-   * Get error message for invalid or missing content
-   * @param {string} filename - Filename that caused the error
-   * @returns {string} - Error message in markdown format
-   */
-  getErrorMessage(filename) {
-    if (!this.validateFilename(filename)) {
-      console.error("Invalid filename provided to content service:", filename);
-      return "# Error: Invalid filename";
-    }
-
-    console.warn(`Content not found for filename: ${filename}`);
-    return `# Content not found for ${filename}\n\nPlease check the file exists and is accessible.`;
-  }
-
-  /**
-   * Clear content cache
+   * Clear the content cache
    */
   clearCache() {
-    this.contentCache.clear();
+    this.cache.clear();
   }
 
   /**
    * Get cache statistics
-   * @returns {Object} - Cache statistics
+   * @returns {Object} Cache statistics
    */
   getCacheStats() {
     return {
-      size: this.contentCache.size,
-      keys: Array.from(this.contentCache.keys()),
-      enabled: this.config.cacheEnabled,
+      size: this.cache.size,
+      keys: Array.from(this.cache.keys()),
+      hitRate: this.cache.size > 0 ? 'N/A' : '0%'
     };
   }
 
   /**
-   * Update service configuration
-   * @param {Object} newConfig - New configuration options
+   * Update content (for future content management)
+   * @param {Object} newContent - New content to merge
    */
-  updateConfig(newConfig) {
-    this.config = { ...this.config, ...newConfig };
+  updateContent(newContent) {
+    this.data = { ...this.data, ...newContent };
+    this.clearCache(); // Clear cache when content changes
   }
 
   /**
-   * Get current configuration
-   * @returns {Object} - Current configuration
+   * Get content for specific section (for backward compatibility)
+   * @param {string} section - Section name
+   * @returns {string} Markdown content
    */
-  getConfig() {
-    return { ...this.config };
+  getMarkdownContent(section) {
+    return this.generateMarkdown(section);
   }
 
   /**
-   * Get available content modules
-   * @returns {Array} - List of available content modules
+   * Validate content structure
+   * @returns {Object} Validation result
    */
-  getAvailableContent() {
-    return Object.keys(this.contentModules);
+  validateContent() {
+    const requiredSections = ['header', 'experience', 'skills', 'education', 'languages', 'references'];
+    const missingSections = requiredSections.filter(section => !this.data[section]);
+    
+    return {
+      isValid: missingSections.length === 0,
+      missingSections,
+      totalSections: requiredSections.length,
+      availableSections: Object.keys(this.data)
+    };
   }
 }
 
@@ -171,3 +303,4 @@ export const contentService = new ContentService();
 
 // Export class for testing or custom instances
 export default ContentService;
+

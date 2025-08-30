@@ -1,0 +1,93 @@
+{
+  "header": {
+    "name": "Saleem Khair",
+    "title": "Senior Backend Engineer | FinTech | Payment Systems & Infrastructure",
+    "location": "Amman, Jordan",
+    "email": "saleemkhair@gmail.com",
+    "phone": "+962-79-604-9560",
+    "linkedin": "https://www.linkedin.com/in/saleem-khair-359795108"
+  },
+  "experience": [
+    {
+      "title": "Senior Software Engineer",
+      "company": "Tamatem Games",
+      "location": "on-premise",
+      "period": "May 2021 – Present",
+      "achievements": [
+        "Designed and built a unified payment integration service handling over **100,000+ transactions** and **$1.7M+ TPV** across providers like **Tap, Fawry, Buko (Fortumo), Coda, Razor, and MoneyHash**.",
+        "Led backend architecture and API design for payment workflows used by internal and external clients.",
+        "Collaborated with DevOps and product teams to optimize **scalability**, **fault-tolerance**, and **deployment strategies**.",
+        "Managed a **team of 6 engineers** (senior to junior) and handled the full development lifecycle of multiple services.",
+        "Integrated observability via **OpenTelemetry (OTEL)**, **Prometheus**, **Grafana**, **Jaeger**, and **Loki**.",
+        "Delivered high-level documentation, **tech-stack assessments**, and **technical due diligence** for stakeholders and investors."
+      ],
+      "techStack": "Python, FastAPI, PostgreSQL, AWS (Lambda, EKS, RDS, S3), Docker w/ Compose, OpenTelemetry, Grafana"
+    },
+    {
+      "title": "Software Development Engineer II - Platform",
+      "company": "Expedia Group",
+      "location": "Amman",
+      "period": "Dec 2019 – May 2021",
+      "achievements": [
+        "Delivered cross-platform **internal libraries** for use across multiple engineering teams.",
+        "Improved onboarding efficiency through robust documentation and changelogs.",
+        "Implemented automation around marketing and **ad performance pipelines**."
+      ],
+      "techStack": "Java, Kotlin, Qubole, AWS (Lambda, S3, EC2, RDS, CodeBuild), Docker, Docker Compose, Splunk, Haystack"
+    },
+    {
+      "title": "Software Development Engineer I - Marketing Technologies",
+      "company": "Expedia Group",
+      "location": "Amman",
+      "period": "May 2018 – Dec 2019",
+      "achievements": [
+        "Built backend services supporting **advertising generation** and analytics across multiple channels.",
+        "Designed and maintained **event-driven systems** using **Kotlin** and **Spring Boot**.",
+        "Developed automation and data pipelines to support **advertisement generation LLM models**."
+      ],
+      "techStack": "Java, Kotlin, Scala, Groovy, Spring & Spring Boot, Qubole, AWS (Lambda, S3, EC2, RDS, CodeBuild), Docker, Docker Compose, Splunk, Haystack"
+    },
+    {
+      "title": "Java Developer",
+      "company": "ProgressSoft",
+      "location": "Amman",
+      "period": "Sep 2016 – Apr 2018",
+      "achievements": [
+        "Built **banking integrations** supporting **ACH**, **RTGS**, and **EBPP** standards under **ISO 20022** specifications.",
+        "Developed modules for **Bill Presentment and Payment** used by regional banks and payment providers.",
+        "Practiced **agile engineering** with **TDD**, **Clean Code**, **Clean Architecture**, **pair-programming**, and design documentation."
+      ],
+      "techStack": "Java, Spring, Banking Standards, ISO 20022, ACH, RTGS, EBPP"
+    },
+    {
+      "title": "Quality Assurance Analyst - Automation Engineer",
+      "company": "Aspire Infotech",
+      "location": "Amman",
+      "period": "Jan 2016 – Aug 2016",
+      "achievements": [
+        "Built automated **UI test suites** using **Selenium** and **Appium**.",
+        "Conducted **regression** and **black-box testing** on web/mobile platforms."
+      ],
+      "techStack": "Selenium, Appium, UI Testing, Regression Testing"
+    }
+  ],
+  "skills": {
+    "languages": ["Python", "Java", "Kotlin", "Scala"],
+    "frameworks": ["FastAPI", "Spring", "Spring Boot", "JPA", "Hibernate"],
+    "cloudInfra": ["AWS (Lambda, SQS, RDS, CodeBuild, S3, EKS)", "Docker", "Docker Compose", "Prometheus", "Grafana", "Jaeger", "Loki"],
+    "concepts": ["Microservices", "TDD", "CI/CD", "OpenTelemetry", "Agile/Scrum", "Clean Architecture"],
+    "databases": ["PostgreSQL", "MySQL"],
+    "testing": ["Selenium", "Appium", "JUnit", "pytest", "SonarQube"],
+    "others": ["Apache Camel", "JMS", "ActiveMQ", "RabbitMQ", "Linux"]
+  },
+  "education": {
+    "degree": "Bachelor of Computer Information Systems",
+    "school": "University of Jordan",
+    "year": "2015"
+  },
+  "languages": [
+    { "name": "Arabic", "level": "Native" },
+    { "name": "English", "level": "Fluent" }
+  ],
+  "references": "Available upon request or on LinkedIn"
+}

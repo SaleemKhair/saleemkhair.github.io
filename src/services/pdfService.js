@@ -1,5 +1,6 @@
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
+import { contentService } from "./contentService";
 
 class PDFService {
   constructor() {
@@ -75,172 +76,72 @@ class PDFService {
       this.pageHeight = this.pdf.internal.pageSize.height;
       this.currentY = this.margin;
 
+      // Get content from the unified content service
+      const content = contentService.getPDFContent();
+
       // Set font
       this.pdf.setFont("helvetica");
       this.pdf.setFontSize(16);
 
       // Header
-      this.addText("Saleem Khair", "bold", 16);
-      this.addText(
-        "Senior Backend Engineer | FinTech | Payment Systems & Infrastructure",
-        "normal",
-        12
-      );
+      this.addText(content.header.name, "bold", 16);
+      this.addText(content.header.title, "normal", 12);
       this.addSpace(10);
 
       // Contact Info
-      this.addText("Location: Amman, Jordan", "normal", 10);
-      this.addText("Email: saleemkhair@gmail.com", "normal", 10);
-      this.addText("Mobile: +962-79-604-9560", "normal", 10);
-      this.addText(
-        "LinkedIn: https://www.linkedin.com/in/saleem-khair-359795108",
-        "normal",
-        10
-      );
+      this.addText(`Location: ${content.header.location}`, "normal", 10);
+      this.addText(`Email: ${content.header.email}`, "normal", 10);
+      this.addText(`Mobile: ${content.header.phone}`, "normal", 10);
+      this.addText(`LinkedIn: ${content.header.linkedin}`, "normal", 10);
       this.addSpace(15);
 
       // Professional Experience
       this.addSectionTitle("PROFESSIONAL EXPERIENCE");
 
-      // Senior Software Engineer
-      this.addJobTitle("Senior Software Engineer");
-      this.addCompanyInfo("Tamatem Games — on-premise | May 2021 – Present");
-      this.addBulletPoint(
-        "Designed and built a unified payment integration service handling over 100,000+ transactions and $1.7M+ TPV across providers like Tap, Fawry, Buko (Fortumo), Coda, Razor, and MoneyHash."
-      );
-      this.addBulletPoint(
-        "Led backend architecture and API design for payment workflows used by internal and external clients."
-      );
-      this.addBulletPoint(
-        "Collaborated with DevOps and product teams to optimize scalability, fault-tolerance, and deployment strategies."
-      );
-      this.addBulletPoint(
-        "Managed a team of 6 engineers (senior to junior) and handled the full development lifecycle of multiple services."
-      );
-      this.addBulletPoint(
-        "Integrated observability via OpenTelemetry (OTEL), Prometheus, Grafana, Jaeger, and Loki."
-      );
-      this.addBulletPoint(
-        "Delivered high-level documentation, tech-stack assessments, and technical due diligence for stakeholders and investors."
-      );
-      this.addText(
-        "Tech Stack: Python, FastAPI, PostgreSQL, AWS (Lambda, EKS, RDS, S3), Docker w/ Compose, OpenTelemetry, Grafana",
-        "italic",
-        9
-      );
-      this.addSpace(10);
+      // Add each experience entry
+      content.experience.forEach((job) => {
+        this.addJobTitle(job.title);
+        this.addCompanyInfo(`${job.company} — ${job.location} | ${job.period}`);
 
-      // Software Development Engineer II
-      this.addJobTitle("Software Development Engineer II - Platform");
-      this.addCompanyInfo("Expedia Group — Amman | Dec 2019 – May 2021");
-      this.addBulletPoint(
-        "Delivered cross-platform internal libraries for use across multiple engineering teams."
-      );
-      this.addBulletPoint(
-        "Improved onboarding efficiency through robust documentation and changelogs."
-      );
-      this.addBulletPoint(
-        "Implemented automation around marketing and ad performance pipelines."
-      );
-      this.addText(
-        "Tech Stack: Java, Kotlin, Qubole, AWS (Lambda, S3, EC2, RDS, CodeBuild), Docker, Docker Compose, Splunk, Haystack",
-        "italic",
-        9
-      );
-      this.addSpace(10);
+        job.achievements.forEach((achievement) => {
+          // Remove markdown formatting for PDF
+          const cleanAchievement = achievement.replace(/\*\*(.*?)\*\*/g, "$1");
+          this.addBulletPoint(cleanAchievement);
+        });
 
-      // Software Development Engineer I
-      this.addJobTitle(
-        "Software Development Engineer I - Marketing Technologies"
-      );
-      this.addCompanyInfo("Expedia Group — Amman | May 2018 – Dec 2019");
-      this.addBulletPoint(
-        "Built backend services supporting advertising generation and analytics across multiple channels."
-      );
-      this.addBulletPoint(
-        "Designed and maintained event-driven systems using Kotlin and Spring Boot."
-      );
-      this.addBulletPoint(
-        "Developed automation and data pipelines to support advertisement generation LLM models."
-      );
-      this.addText(
-        "Tech Stack: Java, Kotlin, Scala, Groovy, Spring & Spring Boot, Qubole, AWS (Lambda, S3, EC2, RDS, CodeBuild), Docker, Docker Compose, Splunk, Haystack",
-        "italic",
-        9
-      );
-      this.addSpace(10);
-
-      // Java Developer
-      this.addJobTitle("Java Developer");
-      this.addCompanyInfo("ProgressSoft — Amman | Sep 2016 – Apr 2018");
-      this.addBulletPoint(
-        "Built banking integrations supporting ACH, RTGS, and EBPP standards under ISO 20022 specifications."
-      );
-      this.addBulletPoint(
-        "Developed modules for Bill Presentment and Payment used by regional banks and payment providers."
-      );
-      this.addBulletPoint(
-        "Practiced agile engineering with TDD, Clean Code, Clean Architecture, pair-programming, and design documentation."
-      );
-      this.addSpace(10);
-
-      // QA Analyst
-      this.addJobTitle("Quality Assurance Analyst - Automation Engineer");
-      this.addCompanyInfo("Aspire Infotech — Amman | Jan 2016 – Aug 2016");
-      this.addBulletPoint(
-        "Built automated UI test suites using Selenium and Appium."
-      );
-      this.addBulletPoint(
-        "Conducted regression and black-box testing on web/mobile platforms."
-      );
-      this.addSpace(15);
+        this.addText(`Tech Stack: ${job.techStack}`, "italic", 9);
+        this.addSpace(10);
+      });
 
       // Technical Skills
       this.addSectionTitle("TECHNICAL SKILLS");
-      this.addText("Languages: Python, Java, Kotlin, Scala", "normal", 10);
-      this.addText(
-        "Frameworks: FastAPI, Spring, Spring Boot, JPA, Hibernate",
-        "normal",
-        10
-      );
-      this.addText(
-        "Cloud & Infra: AWS (Lambda, SQS, RDS, CodeBuild, S3, EKS), Docker, Docker Compose, Prometheus, Grafana, Jaeger, Loki",
-        "normal",
-        10
-      );
-      this.addText(
-        "Concepts & Tools: Microservices, TDD, CI/CD, OpenTelemetry, Agile/Scrum, Clean Architecture",
-        "normal",
-        10
-      );
-      this.addText("Databases: PostgreSQL, MySQL", "normal", 10);
-      this.addText(
-        "Testing: Selenium, Appium, JUnit, pytest, SonarQube",
-        "normal",
-        10
-      );
-      this.addText(
-        "Others: Apache Camel, JMS, ActiveMQ, RabbitMQ, Linux",
-        "normal",
-        10
-      );
+      Object.entries(content.skills).forEach(([category, items]) => {
+        const categoryName =
+          category.charAt(0).toUpperCase() + category.slice(1);
+        this.addText(`${categoryName}: ${items.join(", ")}`, "normal", 10);
+      });
       this.addSpace(15);
 
       // Education
       this.addSectionTitle("EDUCATION");
-      this.addText("Bachelor of Computer Information Systems", "bold", 12);
-      this.addText("University of Jordan — 2015", "normal", 10);
+      this.addText(content.education.degree, "bold", 12);
+      this.addText(
+        `${content.education.school} — ${content.education.year}`,
+        "normal",
+        10
+      );
       this.addSpace(15);
 
       // Languages
       this.addSectionTitle("LANGUAGES");
-      this.addText("Arabic – Native", "normal", 10);
-      this.addText("English – Fluent", "normal", 10);
+      content.languages.forEach((lang) => {
+        this.addText(`${lang.name} – ${lang.level}`, "normal", 10);
+      });
       this.addSpace(15);
 
       // References
       this.addSectionTitle("REFERENCES");
-      this.addText("Available upon request or on LinkedIn", "normal", 10);
+      this.addText(content.references, "normal", 10);
 
       // Save the PDF
       this.pdf.save("Saleem_Khair_Resume.pdf");

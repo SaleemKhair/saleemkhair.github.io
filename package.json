@@ -28,7 +28,9 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "analyze": "source-map-explorer 'build/static/js/*.js'"
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
+    "generate-resume": "node scripts/generate-resume-md.js",
+    "prebuild": "npm run generate-resume"
   },
   "eslintConfig": {
     "extends": [

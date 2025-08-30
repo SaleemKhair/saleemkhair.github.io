@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import DynamicSectionRenderer from "./components/DynamicSectionRenderer";
 import Header from "./components/Header";
+import PDFDownloadButton from "./components/PDFDownloadButton";
 import { getSectionKeys } from "./config/sections";
 import { ThemeProvider } from "./components/ThemeProvider";
 import "./App.css";
@@ -32,7 +33,11 @@ function App() {
                   />
                 ))}
               </main>
-
+              <div className="download-section">
+                <div className="download-buttons">
+                  <PDFDownloadButton />
+                </div>
+              </div>
               <footer className="resume-footer">
                 <p>&copy; 2025 Saleem Khair. All rights reserved.</p>
               </footer>

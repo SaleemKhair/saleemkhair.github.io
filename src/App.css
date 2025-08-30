@@ -329,6 +329,7 @@ body {
   position: relative;
   line-height: 1.6;
   color: #2d3748;
+  list-style: none;
 }
 
 .item-list-item::before {

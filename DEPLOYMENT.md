@@ -37,13 +37,13 @@ git add .
 # Commit changes
 git commit -m "Update resume content and styling"
 
-# Push to master branch
-git push origin master
+# Push to main branch
+git push origin main
 ```
 
 ### **Step 2: Automatic Deployment**
 
-1. **GitHub Actions** automatically triggers on push to `master`
+1. **GitHub Actions** automatically triggers on push to `main`
 2. **Builds** the React application
 3. **Deploys** to GitHub Pages
 4. **Site goes live** at `https://saleemkhair.github.io`
@@ -62,7 +62,7 @@ git push origin master
 name: Deploy to GitHub Pages
 on:
   push:
-    branches: [master] # Triggers on master branch
+    branches: [main] # Triggers on main branch
 
 jobs:
   build-and-deploy:
@@ -124,7 +124,7 @@ jobs:
 #### **1. Site Not Updating**
 
 - Check **Actions** tab for deployment status
-- Ensure you pushed to `master` branch
+- Ensure you pushed to `main` branch
 - Wait 2-3 minutes for deployment to complete
 
 #### **2. Build Failures**
@@ -176,4 +176,4 @@ Your site is successfully deployed when:
 
 ---
 
-**🎯 Your resume website will be automatically available at `https://saleemkhair.github.io` once you push your code to the master branch!**
+**🎯 Your resume website will be automatically available at `https://saleemkhair.github.io` once you push your code to the main branch!**

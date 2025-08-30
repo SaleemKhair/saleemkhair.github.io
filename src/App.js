@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import DownloadButtons from "./components/DownloadButtons";
 import DynamicSectionRenderer from "./components/DynamicSectionRenderer";
 import { getSectionKeys } from "./config/sections";
 import { ThemeProvider } from "./components/ThemeProvider";
@@ -12,7 +11,6 @@ function App() {
   return (
     <ThemeProvider>
       <div className="App">
-        <DownloadButtons />
         <div className="background-gradient">
           <div className="content-container">
             <motion.article
@@ -23,12 +21,6 @@ function App() {
               itemScope
               itemType="https://schema.org/Person"
             >
-              {/* <header className="resume-header" itemProp="name">
-                <h1>Saleem Khair</h1>
-                <p itemProp="jobTitle">
-                  Senior Backend Engineer | FinTech & Payment Systems Expert
-                </p>
-              </header> */}
 
               <main className="resume-content">
                 {sectionKeys.map((sectionKey) => (

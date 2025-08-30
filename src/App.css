@@ -579,7 +579,6 @@ body {
 
 /* Reader Mode Optimizations */
 @media print, (prefers-reduced-motion: reduce) {
-  .download-buttons,
   .background-gradient::before {
     display: none !important;
   }
@@ -594,72 +593,4 @@ body {
     animation: none !important;
     transition: none !important;
   }
-}
-
-/* Download buttons responsive design */
-@media (max-width: 768px) {
-  .download-buttons {
-    position: fixed !important;
-    top: 10px !important;
-    right: 10px !important;
-    flex-direction: column !important;
-    gap: 8px !important;
-  }
-
-  .download-btn {
-    padding: 10px 12px !important;
-    font-size: 12px !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .download-buttons {
-    top: 5px !important;
-    right: 5px !important;
-  }
-
-  .download-btn {
-    padding: 8px 10px !important;
-    font-size: 11px !important;
-  }
-}
-
-/* PDF Generation - Hidden cloned container */
-.pdf-clone {
-  position: absolute !important;
-  left: -9999px !important;
-  top: 0 !important;
-  z-index: -1 !important;
-  visibility: hidden !important;
-}
-
-/* PDF-specific styling to ensure proper rendering */
-.pdf-mode .header-name {
-  color: #1a365d !important;
-  text-shadow: none !important;
-  background-image: none !important;
-  -webkit-background-clip: initial !important;
-  -webkit-text-fill-color: initial !important;
-  background-clip: initial !important;
-}
-
-.pdf-mode .resume-container {
-  height: auto !important;
-  overflow: visible !important;
-  position: relative !important;
-  background: white !important;
-  backdrop-filter: none !important;
-}
-
-.pdf-mode .section {
-  opacity: 1 !important;
-  transform: none !important;
-  visibility: visible !important;
-  animation: none !important;
-  transition: none !important;
-}
-
-.pdf-mode * {
-  animation: none !important;
-  transition: none !important;
 }

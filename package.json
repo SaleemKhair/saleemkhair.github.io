@@ -2,7 +2,7 @@
   "name": "saleem-khair-resume",
   "version": "1.0.0",
   "description": "Professional resume website for Saleem Khair",
-  "homepage": "https://saleemkhair.github.io",
+  "homepage": "https://saleemkhair.com",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",

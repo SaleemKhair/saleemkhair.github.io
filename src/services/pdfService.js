@@ -109,7 +109,9 @@ class PDFService {
           this.addBulletPoint(cleanAchievement);
         });
 
-        this.addText(`Tech Stack: ${job.techStack}`, "italic", 9);
+        if (job.techStack) {
+          this.addText(`Tech Stack: ${job.techStack}`, "italic", 9);
+        }
         this.addSpace(10);
       });
 

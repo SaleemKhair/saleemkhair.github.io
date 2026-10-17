@@ -28,7 +28,11 @@ function generateExperienceMarkdown(experience) {
       markdown += `- ${achievement}\n`;
     });
     
-    markdown += `\n**Tech Stack**: ${job.techStack}\n\n---\n\n`;
+    if (job.techStack) {
+      markdown += `\n**Tech Stack**: ${job.techStack}\n`;
+    }
+
+    markdown += `\n---\n\n`;
   });
   
   return markdown.trim();

@@ -8,21 +8,22 @@
 
 ## Selected Work
 
-### Unified payment integration service — Tamatem Games (2023 – 2026)
+### Payments platform for a mobile games publisher — Tamatem Games (2023 – 2026)
 
-- What I did: Designed and built one integration service in front of 15 live payment providers and 50+ local payment methods, including Tap, Fawry, Boku/Fortumo, Coda, Razor and MoneyHash.
-- Result: Handled 100,000+ transactions and $1.7M+ TPV.
-- Tech: Python, Django, Django REST Framework, PostgreSQL, Celery
+- What I did: Designed and built a unified integration service in front of 15 live payment providers and 50+ local payment methods, and the payments orchestration layer behind Tamatem Plus, instrumented end to end with OpenTelemetry.
+- Result: 100,000+ transactions and $1.7M+ TPV; Pocket Gamer Mobile Games Awards finalist for Best Payment Service Provider (2025, 2026); the platform underpinning the 2026 Mastercard Gateway partnership.
+- Tech: Python, Django, PostgreSQL, Celery, OpenTelemetry, AWS
 
-### Payments orchestration for Tamatem Plus — Tamatem Games (2023 – 2026)
+### Data pipelines for ad-copy generation — Expedia Group (2018 – 2019)
 
-- What I did: Built the payments orchestration layer behind Tamatem Plus.
-- Result: Pocket Gamer Mobile Games Awards finalist for Best Payment Service Provider (2025, 2026), and the platform underpinning the 2026 Mastercard Gateway partnership.
+- What I did: Built event-driven services and data pipelines feeding ML models for ad-copy generation, supporting advertising across multiple channels.
+- Tech: Kotlin, Java, Spring Boot, AWS
 
-### Observability for payment services — Tamatem Games (2023 – 2026)
+### Bank payment messaging — ProgressSoft (2016 – 2018)
 
-- What I did: Instrumented services with OpenTelemetry and configured OTel endpoints, supporting DevOps on the Prometheus, Grafana, Jaeger and Loki monitoring stack.
-- Tech: OpenTelemetry, Prometheus, Grafana, Jaeger, Loki
+- What I did: Implemented message mapping, parsing and validation for ACH, RTGS and EBPP payment messages, and built Bill Presentment and Payment modules.
+- Result: Used by regional banks and payment providers.
+- Tech: Java, Spring
 
 ## Experience
 

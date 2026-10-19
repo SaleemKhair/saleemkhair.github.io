@@ -9,26 +9,27 @@
   },
   "selectedWork": [
     {
-      "title": "Unified payment integration service",
+      "title": "Payments platform for a mobile games publisher",
       "organization": "Tamatem Games",
       "period": "2023 – 2026",
-      "approach": "Designed and built one integration service in front of **15 live payment providers** and **50+ local payment methods**, including Tap, Fawry, Boku/Fortumo, Coda, Razor and MoneyHash.",
-      "outcome": "Handled **100,000+ transactions** and **$1.7M+ TPV**.",
-      "techStack": "Python, Django, Django REST Framework, PostgreSQL, Celery"
+      "approach": "Designed and built a unified integration service in front of **15 live payment providers** and **50+ local payment methods**, and the **payments orchestration layer** behind Tamatem Plus, instrumented end to end with **OpenTelemetry**.",
+      "outcome": "**100,000+ transactions** and **$1.7M+ TPV**; **Pocket Gamer Mobile Games Awards finalist** for Best Payment Service Provider (2025, 2026); the platform underpinning the **2026 Mastercard Gateway partnership**.",
+      "techStack": "Python, Django, PostgreSQL, Celery, OpenTelemetry, AWS"
     },
     {
-      "title": "Payments orchestration for Tamatem Plus",
-      "organization": "Tamatem Games",
-      "period": "2023 – 2026",
-      "approach": "Built the **payments orchestration layer** behind Tamatem Plus.",
-      "outcome": "**Pocket Gamer Mobile Games Awards finalist** for Best Payment Service Provider (2025, 2026), and the platform underpinning the **2026 Mastercard Gateway partnership**."
+      "title": "Data pipelines for ad-copy generation",
+      "organization": "Expedia Group",
+      "period": "2018 – 2019",
+      "approach": "Built **event-driven services** and **data pipelines** feeding **ML models for ad-copy generation**, supporting advertising across multiple channels.",
+      "techStack": "Kotlin, Java, Spring Boot, AWS"
     },
     {
-      "title": "Observability for payment services",
-      "organization": "Tamatem Games",
-      "period": "2023 – 2026",
-      "approach": "Instrumented services with **OpenTelemetry** and configured OTel endpoints, supporting DevOps on the **Prometheus**, **Grafana**, **Jaeger** and **Loki** monitoring stack.",
-      "techStack": "OpenTelemetry, Prometheus, Grafana, Jaeger, Loki"
+      "title": "Bank payment messaging",
+      "organization": "ProgressSoft",
+      "period": "2016 – 2018",
+      "approach": "Implemented message mapping, parsing and validation for **ACH**, **RTGS** and **EBPP** payment messages, and built **Bill Presentment and Payment** modules.",
+      "outcome": "Used by **regional banks** and payment providers.",
+      "techStack": "Java, Spring"
     }
   ],
   "experience": [

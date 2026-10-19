@@ -31,7 +31,9 @@ const SectionItemComponent = ({
     threshold: 0.1,
   });
 
-  const content = contentService.getMarkdownContent(sectionKey);
+  // The section title is rendered separately, so drop the markdown's own "## ..." heading
+  const markdown = contentService.getMarkdownContent(sectionKey);
+  const content = title ? markdown.replace(/^## .*\n+/, "") : markdown;
 
   // Get animation configuration from theme
   const animConfig = getAnimationConfig(animationType);

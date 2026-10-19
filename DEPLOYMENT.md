@@ -1,5 +1,25 @@
 # Deployment Guide
 
+> **⚠️ Current setup (GitHub Actions not used):** the Actions deploy workflow has been
+> removed. GitHub Pages serves the **built files committed to the repo root** of `main`
+> (`index.html`, `static/`, `404.html`, `asset-manifest.json`, `favicon.ico`,
+> `manifest.json`, `robots.txt`, `sitemap.xml`, `llms.txt`, `.nojekyll`). Everything below about automatic Actions deploys is
+> out of date.
+>
+> To publish a content change (e.g. after editing `src/data/resume.json`):
+>
+> ```bash
+> npm run build
+> rm -rf static && cp -r build/index.html build/404.html build/asset-manifest.json \
+>   build/favicon.ico build/manifest.json build/robots.txt build/sitemap.xml \
+>   build/llms.txt build/static .
+> rm -rf build
+> git add -A && git commit -m "Rebuild site" && git push
+> ```
+>
+> Don't copy `build/CNAME` (keep the root `CNAME`) or `build/resume.md` (it clashes
+> with `resume.MD` on case-insensitive file systems).
+
 ## 🚀 **GitHub Pages Automatic Hosting**
 
 This repository is configured for **automatic hosting** on GitHub Pages. Since the repository is named `saleemkhair.github.io`, GitHub will automatically host your site at:

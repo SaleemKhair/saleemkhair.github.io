@@ -6,24 +6,6 @@
 - Email: saleemkhair@gmail.com
 - LinkedIn: https://www.linkedin.com/in/saleem-khair-359795108
 
-## Selected Work
-
-### Unified payment integration service — Tamatem Games (2023 – 2026)
-
-- What I did: Designed and built one integration service in front of 15 live payment providers and 50+ local payment methods, including Tap, Fawry, Boku/Fortumo, Coda, Razor and MoneyHash.
-- Result: Handled 100,000+ transactions and $1.7M+ TPV.
-- Tech: Python, Django, Django REST Framework, PostgreSQL, Celery
-
-### Payments orchestration for Tamatem Plus — Tamatem Games (2023 – 2026)
-
-- What I did: Built the payments orchestration layer behind Tamatem Plus.
-- Result: Pocket Gamer Mobile Games Awards finalist for Best Payment Service Provider (2025, 2026), and the platform underpinning the 2026 Mastercard Gateway partnership.
-
-### Observability for payment services — Tamatem Games (2023 – 2026)
-
-- What I did: Instrumented services with OpenTelemetry and configured OTel endpoints, supporting DevOps on the Prometheus, Grafana, Jaeger and Loki monitoring stack.
-- Tech: OpenTelemetry, Prometheus, Grafana, Jaeger, Loki
-
 ## Experience
 
 ### FinTech Consultant — Independent (Oct 2025 – Present)

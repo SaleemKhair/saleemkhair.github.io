@@ -30,14 +30,6 @@ class ContentService {
   }
 
   /**
-   * Get selected work (case study) entries
-   * @returns {Array} Array of selected work DTOs
-   */
-  getSelectedWork() {
-    return [...(this.data.selectedWork || [])];
-  }
-
-  /**
    * Get all experience entries
    * @returns {Array} Array of experience DTOs
    */
@@ -96,7 +88,6 @@ class ContentService {
   getAllContent() {
     return {
       header: this.getHeader(),
-      selectedWork: this.getSelectedWork(),
       experience: this.getExperience(),
       skills: this.getSkills(),
       education: this.getEducation(),
@@ -122,9 +113,6 @@ class ContentService {
     switch (section) {
       case 'header':
         markdown = this.generateHeaderMarkdown();
-        break;
-      case 'selectedWork':
-        markdown = this.generateSelectedWorkMarkdown();
         break;
       case 'experience':
         markdown = this.generateExperienceMarkdown();
@@ -159,7 +147,7 @@ class ContentService {
       return this.cache.get(cacheKey);
     }
 
-    const sections = ['header', 'selectedWork', 'experience', 'skills', 'education', 'languages', 'references'];
+    const sections = ['header', 'experience', 'skills', 'education', 'languages', 'references'];
     const markdown = sections.map(section => this.generateMarkdown(section)).join('\n\n');
     
     this.cache.set(cacheKey, markdown);
@@ -199,31 +187,6 @@ class ContentService {
   generateHeaderMarkdown() {
     const header = this.data.header;
     return `# ${header.name}\n\n${header.title}\n\n---\n\n**Location**: ${header.location}\n\n**Email**: [${header.email}](mailto:${header.email})\n\n**Mobile No.**: [${header.phone}](tel:${header.phone})\n\n[**LinkedIn Profile**](${header.linkedin})\n\n---`;
-  }
-
-  generateSelectedWorkMarkdown() {
-    let markdown = '## SELECTED WORK\n\n';
-
-    this.getSelectedWork().forEach(work => {
-      markdown += `### ${work.title}\n\n**${work.organization}** | **${work.period}**\n\n`;
-
-      if (work.challenge) {
-        markdown += `- **Challenge:** ${work.challenge}\n`;
-      }
-      if (work.approach) {
-        markdown += `- **What I did:** ${work.approach}\n`;
-      }
-      if (work.outcome) {
-        markdown += `- **Result:** ${work.outcome}\n`;
-      }
-      if (work.techStack) {
-        markdown += `\n**Tech Stack**: ${work.techStack}\n`;
-      }
-
-      markdown += `\n---\n\n`;
-    });
-
-    return markdown.trim();
   }
 
   generateExperienceMarkdown() {
@@ -282,7 +245,7 @@ class ContentService {
    * @returns {Array} List of available section names
    */
   getAvailableContent() {
-    return ['header', 'selectedWork', 'experience', 'skills', 'education', 'languages', 'references'];
+    return ['header', 'experience', 'skills', 'education', 'languages', 'references'];
   }
 
   /**

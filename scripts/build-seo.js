@@ -36,33 +36,11 @@ function stripMarkdown(text) {
   return String(text).replace(/\*\*(.*?)\*\*/g, '$1');
 }
 
-function generateStaticHtml({ header, selectedWork = [], experience, skills, education, languages }) {
+function generateStaticHtml({ header, experience, skills, education, languages }) {
   let html = '<main id="static-resume">\n';
   html += `<h1>${escapeHtml(header.name)}</h1>\n`;
   html += `<p>${escapeHtml(header.title)}</p>\n`;
   html += `<p>${escapeHtml(header.location)} · <a href="mailto:${escapeHtml(header.email)}">${escapeHtml(header.email)}</a> · <a href="${escapeHtml(header.linkedin)}">LinkedIn</a></p>\n`;
-
-  html += '<section><h2>Selected Work</h2>\n';
-  selectedWork.forEach(work => {
-    html += '<article>\n';
-    html += `<h3>${escapeHtml(work.title)} — ${escapeHtml(work.organization)}</h3>\n`;
-    html += `<p>${escapeHtml(work.period)}</p>\n<ul>\n`;
-    if (work.challenge) {
-      html += `<li>Challenge: ${inlineMarkdownToHtml(work.challenge)}</li>\n`;
-    }
-    if (work.approach) {
-      html += `<li>What I did: ${inlineMarkdownToHtml(work.approach)}</li>\n`;
-    }
-    if (work.outcome) {
-      html += `<li>Result: ${inlineMarkdownToHtml(work.outcome)}</li>\n`;
-    }
-    html += '</ul>\n';
-    if (work.techStack) {
-      html += `<p>Tech Stack: ${escapeHtml(work.techStack)}</p>\n`;
-    }
-    html += '</article>\n';
-  });
-  html += '</section>\n';
 
   html += '<section><h2>Professional Experience</h2>\n';
   experience.forEach(job => {
@@ -111,27 +89,9 @@ function generateSitemapXml() {
 }
 
 // Format follows the llms.txt proposal (https://llmstxt.org/): H1, blockquote summary, details
-function generateLlmsTxt({ header, selectedWork = [], experience, skills, education, languages }) {
+function generateLlmsTxt({ header, experience, skills, education, languages }) {
   let text = `# ${header.name}\n\n> ${header.title}. Based in ${header.location}.\n\n`;
   text += `- Website: ${SITE_URL}/\n- Email: ${header.email}\n- LinkedIn: ${header.linkedin}\n\n`;
-
-  text += '## Selected Work\n\n';
-  selectedWork.forEach(work => {
-    text += `### ${work.title} — ${work.organization} (${work.period})\n\n`;
-    if (work.challenge) {
-      text += `- Challenge: ${stripMarkdown(work.challenge)}\n`;
-    }
-    if (work.approach) {
-      text += `- What I did: ${stripMarkdown(work.approach)}\n`;
-    }
-    if (work.outcome) {
-      text += `- Result: ${stripMarkdown(work.outcome)}\n`;
-    }
-    if (work.techStack) {
-      text += `- Tech: ${work.techStack}\n`;
-    }
-    text += '\n';
-  });
 
   text += '## Experience\n\n';
   experience.forEach(job => {

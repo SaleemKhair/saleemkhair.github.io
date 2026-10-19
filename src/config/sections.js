@@ -22,48 +22,6 @@ const getItemVariants = () => {
   };
 };
 
-// Components shared by item sections (Selected Work, Professional Experience)
-const itemSectionComponents = {
-  h3: ({ children }) => (
-    <motion.h3 variants={getItemVariants()} className="job-title">
-      {children}
-    </motion.h3>
-  ),
-  p: ({ children }) => (
-    <motion.p variants={getItemVariants()} className="company-info">
-      {children}
-    </motion.p>
-  ),
-  ul: ({ children }) => (
-    <motion.ul variants={getItemVariants()} className="job-description">
-      {children}
-    </motion.ul>
-  ),
-  li: ({ children }) => (
-    <motion.li variants={getItemVariants()}>{children}</motion.li>
-  ),
-  strong: ({ children }) => (
-    <motion.strong
-      variants={getItemVariants()}
-      style={{ color: getColor("primary"), fontWeight: 600 }}
-    >
-      {children}
-    </motion.strong>
-  ),
-  hr: () => (
-    <motion.hr
-      variants={getItemVariants()}
-      style={{
-        border: "none",
-        height: "1px",
-        background:
-          "linear-gradient(90deg, transparent, #e2e8f0, transparent)",
-        margin: "2rem 0",
-      }}
-    />
-  ),
-};
-
 export const sectionsConfig = {
   header: {
     type: "special", // Special handling for header with icons
@@ -71,22 +29,50 @@ export const sectionsConfig = {
     title: null, // No title needed for header
   },
 
-  selectedWork: {
-    type: "item",
-    component: "SectionItemComponent",
-    title: "Selected Work",
-    customComponents: itemSectionComponents,
-    itemAnimation: { opacity: 0, y: 30 },
-    itemAnimationIn: { opacity: 1, y: 0 },
-    itemTransition: { duration: 0.6, ease: "easeOut" },
-    staggerDelay: 0.2,
-  },
-
   experience: {
     type: "item",
     component: "SectionItemComponent",
     title: "Professional Experience",
-    customComponents: itemSectionComponents,
+    customComponents: {
+      h3: ({ children }) => (
+        <motion.h3 variants={getItemVariants()} className="job-title">
+          {children}
+        </motion.h3>
+      ),
+      p: ({ children }) => (
+        <motion.p variants={getItemVariants()} className="company-info">
+          {children}
+        </motion.p>
+      ),
+      ul: ({ children }) => (
+        <motion.ul variants={getItemVariants()} className="job-description">
+          {children}
+        </motion.ul>
+      ),
+      li: ({ children }) => (
+        <motion.li variants={getItemVariants()}>{children}</motion.li>
+      ),
+      strong: ({ children }) => (
+        <motion.strong
+          variants={getItemVariants()}
+          style={{ color: getColor("primary"), fontWeight: 600 }}
+        >
+          {children}
+        </motion.strong>
+      ),
+      hr: () => (
+        <motion.hr
+          variants={getItemVariants()}
+          style={{
+            border: "none",
+            height: "1px",
+            background:
+              "linear-gradient(90deg, transparent, #e2e8f0, transparent)",
+            margin: "2rem 0",
+          }}
+        />
+      ),
+    },
     itemAnimation: { opacity: 0, y: 30 },
     itemAnimationIn: { opacity: 1, y: 0 },
     itemTransition: { duration: 0.6, ease: "easeOut" },

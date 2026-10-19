@@ -7,6 +7,30 @@
     "phone": "+962-79-604-9560",
     "linkedin": "https://www.linkedin.com/in/saleem-khair-359795108"
   },
+  "selectedWork": [
+    {
+      "title": "Unified payment integration service",
+      "organization": "Tamatem Games",
+      "period": "2023 – 2026",
+      "approach": "Designed and built one integration service in front of **15 live payment providers** and **50+ local payment methods**, including Tap, Fawry, Boku/Fortumo, Coda, Razor and MoneyHash.",
+      "outcome": "Handled **100,000+ transactions** and **$1.7M+ TPV**.",
+      "techStack": "Python, Django, Django REST Framework, PostgreSQL, Celery"
+    },
+    {
+      "title": "Payments orchestration for Tamatem Plus",
+      "organization": "Tamatem Games",
+      "period": "2023 – 2026",
+      "approach": "Built the **payments orchestration layer** behind Tamatem Plus.",
+      "outcome": "**Pocket Gamer Mobile Games Awards finalist** for Best Payment Service Provider (2025, 2026), and the platform underpinning the **2026 Mastercard Gateway partnership**."
+    },
+    {
+      "title": "Observability for payment services",
+      "organization": "Tamatem Games",
+      "period": "2023 – 2026",
+      "approach": "Instrumented services with **OpenTelemetry** and configured OTel endpoints, supporting DevOps on the **Prometheus**, **Grafana**, **Jaeger** and **Loki** monitoring stack.",
+      "techStack": "OpenTelemetry, Prometheus, Grafana, Jaeger, Loki"
+    }
+  ],
   "experience": [
     {
       "title": "FinTech Consultant",

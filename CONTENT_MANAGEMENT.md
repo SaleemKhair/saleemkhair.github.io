@@ -44,6 +44,17 @@ Open `src/data/resume.json` and update the content:
     "phone": "+1234567890",
     "linkedin": "https://linkedin.com/in/yourprofile"
   },
+  "selectedWork": [
+    {
+      "title": "Project name",
+      "organization": "Company Name",
+      "period": "2023 – 2026",
+      "challenge": "Optional: the problem it solved",
+      "approach": "What you did, with **bold text**",
+      "outcome": "Optional: the result",
+      "techStack": "Optional: Tech, Stack, Here"
+    }
+  ],
   "experience": [
     {
       "title": "Job Title",
